@@ -1,9 +1,11 @@
 package com.example.webscraper.services;
 
+import com.example.webscraper.repositories.RequestRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Component;
 public class JsoupRun implements CommandLineRunner {
 
     private String link = "https://news.ycombinator.com";
+
+    @Autowired
+    RequestRepository requestRepository;
 
     @Override
     public void run(String... args) throws Exception {
