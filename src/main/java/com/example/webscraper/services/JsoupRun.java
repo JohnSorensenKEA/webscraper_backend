@@ -19,16 +19,26 @@ public class JsoupRun implements CommandLineRunner {
                 + "<body><p>Parsed HTML into a doc.</p></body></html>" +
                 "<html><head><title class=\"test1\">First parse</title></head>"
                 + "<body><p>Parsed HTML into a doc.</p></body></html>");
+
+
         Elements ele = d.select("title.test1");
 
         for (int i = 0; i < ele.size(); i++) {
             System.out.println(ele.eq(i));
         }
+        HTMLscraper scrape = new HTMLscraper("https://news.ycombinator.com/");
+        Document doc = Jsoup.parse(scrape.scrape());
 
-        Document doc = Jsoup.parse("");
+//        Element e = doc.selectFirst("table#hnmain");
+        Elements e = doc.select("a.storylink");
+        for(int i = 0; i<e.size(); i++){
+            System.out.println("Titel: " + e.eq(i).text());
+            System.out.println("Link: " + e.eq(i).attr("href"));
+            System.out.println("\n");
+        }
 
-        Element e = doc.selectFirst("table#hnmain");
-        System.out.println(e);
+
+//        System.out.println(e);
 
     }
 }
