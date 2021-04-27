@@ -63,8 +63,6 @@ public class JsoupRun implements CommandLineRunner {
 
              */
         }
-        Request r2d2 = requestRepository.findById(1l).get();
-        System.out.println(r2d2);
 //        System.out.println(e);
 
     }

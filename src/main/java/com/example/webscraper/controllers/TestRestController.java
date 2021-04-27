@@ -46,9 +46,9 @@ public class TestRestController {
         requestRepository.delete(requestRepository.getOne(id));
 
         if (!requestRepository.existsById(id)){
-            return new ResponseEntity<Long>(id, HttpStatus.OK);
+            return new ResponseEntity<>(id, HttpStatus.OK);
         }else {
-            return new ResponseEntity<Long>(0l, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(0L, HttpStatus.NO_CONTENT);
         }
     }
 
