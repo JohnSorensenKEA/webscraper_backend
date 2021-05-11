@@ -4,5 +4,5 @@ import com.example.webscraper.models.Request;
 
 public interface JsoupService {
 
-    Request getData(Request request);
+    Boolean getData(Request request);
 }

@@ -36,7 +36,7 @@ public class TestRestController {
 
     @PostMapping(value = "/request/new", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Request newRequest(@RequestBody Request request){
+    public Boolean newRequest(@RequestBody Request request){
         return jsoupService.getData(request);
     }
 

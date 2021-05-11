@@ -23,7 +23,6 @@ public class HTMLscraper {
             while((inputLine = in.readLine()) != null) {
                 temp += inputLine;
             }
-            System.out.println(temp);
             return temp;
         }catch (Exception e){
             System.out.println("error in scraping: " + e.getMessage());

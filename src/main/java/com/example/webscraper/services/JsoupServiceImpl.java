@@ -19,7 +19,7 @@ public class JsoupServiceImpl implements JsoupService{
     @Autowired
     DataRepository dataRepository;
 
-    public Request getData(Request request){
+    public Boolean getData(Request request){
         requestRepository.save(request);
 
         HTMLscraper scrape = new HTMLscraper(request.getLink());
@@ -30,9 +30,11 @@ public class JsoupServiceImpl implements JsoupService{
 
         for (int i = 0; i < elements.size(); i++){
             Data data = new Data(elements.eq(i).toString(), request);
-            dataRepository.save(data);
+            if (data.getContent().length() < 1500){
+                dataRepository.save(data);
+            }
         }
 
-        return requestRepository.getOne(request.getId());
+        return requestRepository.findById(request.getId()).isPresent();
     }
 }
